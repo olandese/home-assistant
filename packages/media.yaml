@@ -1,0 +1,28 @@
+# Harmony Hub
+remote:
+  - platform: harmony
+    name: Woonkamer
+    host: 192.168.0.183
+sensor:
+  - platform: template
+    sensors:
+      current_activity:
+        friendly_name: 'Harmony activity'
+        value_template: '{{ states.remote.woonkamer.attributes.current_activity }}'
+
+# Input selector for Harmony activity
+input_select:
+  harmony:
+    name: Harmony
+    options:
+      - Select Input
+      - Muziek luisteren
+      - Video to Chromecast
+      - Xbox Spelen
+      - Music to Chromecast
+      - Watch TV
+      - Sat Radio Luisteren
+      - SAT TV kijken
+      - Film kijken
+      - Power Off
+    icon: mdi:monitor

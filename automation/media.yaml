@@ -1,0 +1,130 @@
+# Harmony input select Automatisierung
+- alias: Harmony
+  hide_entity: True
+  trigger:
+    platform: state
+    entity_id: input_select.harmony
+    from: 'Select Input'
+  action:
+    - service: remote.turn_on
+      entity_id: remote.woonkamer
+      data_template:  
+        activity: >
+          {% if is_state("input_select.harmony", "Muziek luisteren") %}
+            10030770
+          {% elif is_state("input_select.harmony", "Video to Chromecast") %}
+            18648595
+          {% elif is_state("input_select.harmony", "Xbox Spelen") %}
+            10030758
+          {% elif is_state("input_select.harmony", "Music to Chromecast") %}
+            18648366
+          {% elif is_state("input_select.harmony", "Watch TV") %}
+            19821924
+          {% elif is_state("input_select.harmony", "Sat Radio Luisteren") %}
+            10030740
+          {% elif is_state("input_select.harmony", "SAT TV kijken") %}
+            10030514
+          {% elif is_state("input_select.harmony", "Film kijken") %}
+            10030549
+          {% else %}
+          {% endif %}
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Select Input"
+
+- alias: Harmony Off  
+  hide_entity: True
+  trigger:
+    platform: state
+    entity_id: input_select.harmony
+    to: 'Power Off'
+  action:
+    - service: remote.turn_off
+      entity_id: remote.woonkamer
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Select Input"
+
+- alias: muziek_luisteren
+  hide_entity: true
+  trigger:
+  action:
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Muziek luisteren"
+
+- alias: video_to_chromecast
+  hide_entity: true
+  trigger:
+  action:
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Video to Chromecast"
+
+- alias: xbox_spelen
+  hide_entity: true
+  trigger:
+  action:
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Xbox Spelen"
+
+- alias: music_to_chromecast
+  hide_entity: true
+  trigger:
+  action:
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Music to Chromecast"
+
+- alias: watch_tv
+  hide_entity: true
+  trigger:
+  action:
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Watch TV"
+
+
+- alias: sat_radio_luisteren
+  hide_entity: true
+  trigger:
+  action:
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Sat Radio Luisteren"
+
+- alias: sat_tv_kijken
+  hide_entity: true
+  trigger:
+  action:
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "SAT TV kijken"
+
+- alias: film_kijken
+  hide_entity: true
+  trigger:
+  action:
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Film kijken"
+
+- alias: media_off
+  hide_entity: true
+  trigger:
+  action:
+    - service: input_select.select_option
+      entity_id: input_select.harmony
+      data_template:
+        option: "Power Off"
