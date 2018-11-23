@@ -3,10 +3,12 @@
 *
 
 # You can whitelist files/folders with !, these will not be ignored.
-!**/*.yaml
+!*.yaml
 !.gitignore
 !*.md
 !updategit.sh
+!automation
+!packages
 
 # Ignore folders.
 .storage
