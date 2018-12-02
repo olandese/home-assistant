@@ -66,6 +66,16 @@ tts:
 # Cloud
 cloud:
 
+device_tracker:
+#  - platform: asuswrt
+#    host: 192.168.0.100
+#    username: !secret RT_AC87U_username
+#    password: !secret RT_AC87U_password
+#    mode: ap
+  - platform: fritz
+    host: 192.168.0.1
+    password: !secret fritzbox_password
+
 group: !include groups.yaml
 script: !include scripts.yaml
 automation: !include_dir_merge_list automation/
